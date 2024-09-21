@@ -92,7 +92,7 @@ public class Pet
     /// <summary>
     /// Дата создания
     /// </summary>
-    public DateTime CreationDateTime { get; private set; }
+    public DateTime CreatedDateTime { get; private set; } = DateTime.UtcNow;
 
     public Result AddPaymentDetails(PaymentDetails paymentDetails)
     {
