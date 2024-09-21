@@ -8,9 +8,7 @@ namespace PetBrothers.Domain;
 public class Volunteer
 {
     private readonly List<SocialNetwork> _socialNetworks = [];
-
     private readonly List<PaymentDetails> _paymentDetails = [];
-
     private readonly List<Pet> _ownedPets = [];
 
     /// <summary>
