@@ -1,4 +1,4 @@
-﻿using PetBrothers.Domain.Abstractions;
+﻿using CSharpFunctionalExtensions;
 
 namespace PetBrothers.Domain;
 
