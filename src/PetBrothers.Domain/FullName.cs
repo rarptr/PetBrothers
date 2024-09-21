@@ -5,7 +5,7 @@ namespace PetBrothers.Domain;
 /// <summary>
 /// ФИО
 /// </summary>
-public class VolunteerFullName
+public class FullName
 {
     /// <summary>
     /// Фамилия
@@ -23,13 +23,13 @@ public class VolunteerFullName
     public string MiddleName { get; private set; } = string.Empty;
 
 
-    public static Result<VolunteerFullName> Create(string lastName, string firstName, string middleName)
+    public static Result<FullName> Create(string lastName, string firstName, string middleName)
     {
-        var fullName = new VolunteerFullName(lastName, firstName, middleName);
+        var fullName = new FullName(lastName, firstName, middleName);
         return Result.Success(fullName);
     }
 
-    private VolunteerFullName(string lastName, string firstName, string middleName)
+    private FullName(string lastName, string firstName, string middleName)
     {
         LastName = lastName;
         FirstName = firstName;

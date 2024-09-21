@@ -19,7 +19,7 @@ public class Volunteer
     /// <summary>
     /// ФИО
     /// </summary>
-    public VolunteerFullName FullName { get; private set; } = null!;
+    public FullName FullName { get; private set; } = null!;
 
     /// <summary>
     /// Email
