@@ -54,7 +54,7 @@ public class Volunteer
     public IReadOnlyList<PaymentDetails> PaymentDetails => _paymentDetails;
 
     /// <summary>
-    /// Домашние животные волонтёра
+    /// Домашние животные, закреплённые за волонтёром
     /// </summary>
     public IReadOnlyList<Pet> OwnedPets => _ownedPets;
 
