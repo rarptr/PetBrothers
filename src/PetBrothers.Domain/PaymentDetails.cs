@@ -1,4 +1,6 @@
-﻿namespace PetBrothers.Domain;
+﻿using CSharpFunctionalExtensions;
+
+namespace PetBrothers.Domain;
 
 /// <summary>
 /// Реквизит
@@ -14,4 +16,17 @@ public class PaymentDetails
     /// Описание деталей реквизита
     /// </summary>
     public string Description { get; set; } = string.Empty;
+
+
+    public static Result<PaymentDetails> Create(string title, string description)
+    {
+        var paymentDetails = new PaymentDetails(title, description);
+        return Result.Success(paymentDetails);
+    }
+
+    private PaymentDetails(string title, string description)
+    {
+        Title = title;
+        Description = description;
+    }
 }

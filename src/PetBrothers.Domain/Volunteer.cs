@@ -17,9 +17,9 @@ public class Volunteer
     public Guid Id { get; private set; }
 
     /// <summary>
-    /// Фамилия имя отчество
+    /// ФИО
     /// </summary>
-    public string FullName { get; private set; } = string.Empty;
+    public VolunteerFullName FullName { get; private set; } = null!;
 
     /// <summary>
     /// Email
