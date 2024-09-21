@@ -85,7 +85,7 @@ public class Pet
     public PetAssistanceStatusEnum AssistanceStatus { get; private set; }
 
     /// <summary>
-    /// Реквизит для финансовой помощи
+    /// Реквизиты для финансовой помощи
     /// </summary>
     public IReadOnlyList<PaymentDetails> PaymentDetails => _paymentDetails;
 
@@ -97,7 +97,6 @@ public class Pet
     public Result AddPaymentDetails(PaymentDetails paymentDetails)
     {
         _paymentDetails.Add(paymentDetails);
-
         return Result.Success();
     }
 }
