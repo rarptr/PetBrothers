@@ -59,17 +59,20 @@ public class Volunteer
     /// <summary>
     /// Количество удомашненных животных
     /// </summary>
-    public int NumberOfDomesticatedPets => _ownedPets.Count(pet => pet.AssistanceStatus == PetAssistanceStatusEnum.FoundHome);
+    public int NumberOfDomesticatedPets 
+        => _ownedPets.Count(pet => pet.AssistanceStatus == PetAssistanceStatusEnum.FoundHome);
 
     /// <summary>
     /// Количество домашних животных, ищущих дом
     /// </summary>
-    public int NumberOfPetsLookingForHome => _ownedPets.Count(pet => pet.AssistanceStatus == PetAssistanceStatusEnum.LookingForHome);
+    public int NumberOfPetsLookingForHome 
+        => _ownedPets.Count(pet => pet.AssistanceStatus == PetAssistanceStatusEnum.LookingForHome);
 
     /// <summary>
     /// Количество животных на лечении
     /// </summary>
-    public int NumberOfPetsOnTreatment => _ownedPets.Count(pet => pet.AssistanceStatus == PetAssistanceStatusEnum.NeedsHelp);
+    public int NumberOfPetsOnTreatment 
+        => _ownedPets.Count(pet => pet.AssistanceStatus == PetAssistanceStatusEnum.NeedsHelp);
 
 
     public Result AddSocialNetwork(SocialNetwork socialNetwork)
