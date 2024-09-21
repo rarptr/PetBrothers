@@ -8,6 +8,7 @@ namespace PetBrothers.Domain;
 public class Pet
 {
     private readonly List<PaymentDetails> _paymentDetails = [];
+    private readonly List<PetPhoto> _petPhotos = [];
 
     /// <summary>
     /// Id
@@ -90,13 +91,25 @@ public class Pet
     public IReadOnlyList<PaymentDetails> PaymentDetails => _paymentDetails;
 
     /// <summary>
+    /// Фотографии
+    /// </summary>
+    public IReadOnlyList<PetPhoto> PetPhotos => _petPhotos;
+
+    /// <summary>
     /// Дата создания
     /// </summary>
     public DateTime CreatedDateTime { get; private set; } = DateTime.UtcNow;
 
+
     public Result AddPaymentDetails(PaymentDetails paymentDetails)
     {
         _paymentDetails.Add(paymentDetails);
+        return Result.Success();
+    }
+
+    public Result AddPetPhoto(PetPhoto petPhoto)
+    {
+        _petPhotos.Add(petPhoto);
         return Result.Success();
     }
 }
