@@ -15,7 +15,7 @@ public class ApplicationDbContext(IConfiguration configuration) : DbContext
     {
         var connectionString = configuration.GetConnectionString(DATABASE)
             ?? throw new ArgumentNullException(nameof(configuration));
-        optionsBuilder.UseNpgsql(configuration.GetConnectionString(DATABASE));
+        optionsBuilder.UseNpgsql(connectionString);
         optionsBuilder.UseSnakeCaseNamingConvention();
         optionsBuilder.UseLoggerFactory(CreateLoggerFactory());
     }

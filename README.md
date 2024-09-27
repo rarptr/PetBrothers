@@ -1,5 +1,9 @@
 # PetBrothers
 
+## Диаграмма БД
+
+![db-diagram](./img/db-diagram.PNG)
+
 ## Запуск 
 
 1. Добавить секреты 
