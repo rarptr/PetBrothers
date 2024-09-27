@@ -1,11 +1,11 @@
-﻿using CSharpFunctionalExtensions;
+﻿using PetBrothers.Domain.Shared;
 
 namespace PetBrothers.Domain;
 
 /// <summary>
 /// ФИО
 /// </summary>
-public class FullName
+public record FullName
 {
     /// <summary>
     /// Фамилия
@@ -26,8 +26,10 @@ public class FullName
     public static Result<FullName> Create(string lastName, string firstName, string middleName)
     {
         var fullName = new FullName(lastName, firstName, middleName);
-        return Result.Success(fullName);
+        return fullName;
     }
+
+    private FullName() { }
 
     private FullName(string lastName, string firstName, string middleName)
     {

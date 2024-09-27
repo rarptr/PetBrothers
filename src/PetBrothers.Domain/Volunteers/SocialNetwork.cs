@@ -1,28 +1,29 @@
-﻿using CSharpFunctionalExtensions;
+﻿using PetBrothers.Domain.Shared;
 
-namespace PetBrothers.Domain;
+namespace PetBrothers.Domain.Volunteers;
 
 /// <summary>
 /// Социальная сеть
 /// </summary>
-public class SocialNetwork
+public record SocialNetwork
 {
     /// <summary>
     /// Название
     /// </summary>
     public string Title { get; set; } = string.Empty;
-    
+
     /// <summary>
     /// Ссылка
     /// </summary>
     public string Link { get; set; } = string.Empty;
 
-
     public static Result<SocialNetwork> Create(string title, string link)
     {
         var socialNetwork = new SocialNetwork(title, link);
-        return Result.Success(socialNetwork);
+        return socialNetwork;
     }
+
+    private SocialNetwork() { }
 
     private SocialNetwork(string title, string link)
     {

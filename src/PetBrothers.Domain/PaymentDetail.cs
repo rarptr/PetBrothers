@@ -1,11 +1,11 @@
-﻿using CSharpFunctionalExtensions;
+﻿using PetBrothers.Domain.Shared;
 
 namespace PetBrothers.Domain;
 
 /// <summary>
 /// Реквизит
 /// </summary>
-public class PaymentDetails
+public record PaymentDetail
 {
     /// <summary>
     /// Название реквизита
@@ -18,13 +18,13 @@ public class PaymentDetails
     public string Description { get; set; } = string.Empty;
 
 
-    public static Result<PaymentDetails> Create(string title, string description)
+    public static Result<PaymentDetail> Create(string title, string description)
     {
-        var paymentDetails = new PaymentDetails(title, description);
-        return Result.Success(paymentDetails);
+        var paymentDetails = new PaymentDetail(title, description);
+        return paymentDetails;
     }
 
-    private PaymentDetails(string title, string description)
+    private PaymentDetail(string title, string description)
     {
         Title = title;
         Description = description;

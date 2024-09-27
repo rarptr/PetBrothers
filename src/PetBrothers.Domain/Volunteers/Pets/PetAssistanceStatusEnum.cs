@@ -1,4 +1,4 @@
-﻿namespace PetBrothers.Domain;
+﻿namespace PetBrothers.Domain.Volunteers.Pets;
 
 /// <summary>
 /// Статус животного

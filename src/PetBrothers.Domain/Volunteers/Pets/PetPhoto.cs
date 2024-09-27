@@ -1,16 +1,16 @@
-﻿using CSharpFunctionalExtensions;
+﻿using PetBrothers.Domain.Shared;
 
-namespace PetBrothers.Domain;
+namespace PetBrothers.Domain.Volunteers.Pets;
 
 /// <summary>
 /// Фото животного
 /// </summary>
-public class PetPhoto
+public record PetPhoto
 {
     /// <summary>
     /// Путь хранения
     /// </summary>
-    public string StoragePath { get; private set; }
+    public string StoragePath { get; private set; } = default!;
 
     /// <summary>
     /// Указывает главное ли фото. true - главное, иначе - false
@@ -21,8 +21,10 @@ public class PetPhoto
     public static Result<PetPhoto> Create(string storagePath, bool isMain)
     {
         var petPhoto = new PetPhoto(storagePath, isMain);
-        return Result.Success(petPhoto);
+        return petPhoto;
     }
+
+    private PetPhoto() { }
 
     private PetPhoto(string storagePath, bool isMain)
     {
