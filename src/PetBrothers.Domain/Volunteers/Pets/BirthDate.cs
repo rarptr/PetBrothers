@@ -6,7 +6,13 @@ public record BirthDate
 {
     public DateOnly Value { get; }
 
-    public static Result<BirthDate> Create(DateOnly value) => new BirthDate(value);
+    public static Result<BirthDate> Create(DateOnly value)
+    {
+        if (value > DateOnly.FromDateTime(DateTime.Now))
+            return $"{nameof(BirthDate)} cannot be in the future.";
+
+        return new BirthDate(value);
+    }
 
     private BirthDate() { }
 

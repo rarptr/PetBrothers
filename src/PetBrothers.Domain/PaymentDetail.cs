@@ -7,21 +7,30 @@ namespace PetBrothers.Domain;
 /// </summary>
 public record PaymentDetail
 {
+    public const int TITLE_MAX_LENGTH = Constants.MAX_SMALL_LENGTH;
+    
+    public const int DESCRIPTION_MAX_LENGTH = Constants.MAX_SMALL_LENGTH;
+
     /// <summary>
-    /// Название реквизита
+    /// Название
     /// </summary>
     public string Title { get; set; } = string.Empty;
 
     /// <summary>
-    /// Описание деталей реквизита
+    /// Описание деталей
     /// </summary>
     public string Description { get; set; } = string.Empty;
 
 
     public static Result<PaymentDetail> Create(string title, string description)
     {
-        var paymentDetails = new PaymentDetail(title, description);
-        return paymentDetails;
+        if (string.IsNullOrWhiteSpace(title) || title.Length > TITLE_MAX_LENGTH)
+            return $"{nameof(title)} is invalid";
+
+        if (string.IsNullOrWhiteSpace(description) || description.Length > DESCRIPTION_MAX_LENGTH)
+            return $"{nameof(description)} is invalid";
+
+        return new PaymentDetail(title, description);
     }
 
     private PaymentDetail(string title, string description)

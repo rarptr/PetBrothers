@@ -91,9 +91,4 @@ public class Pet
     /// Дата создания
     /// </summary>
     public DateTime CreatedDateTime { get; private set; } = DateTime.UtcNow;
-
-    /// <summary>
-    /// Закреплённый волонтёр
-    /// </summary>
-    public Volunteer? Volunteer { get; set; }
 }

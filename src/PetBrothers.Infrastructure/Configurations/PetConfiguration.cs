@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PetBrothers.Domain.Shared;
+using PetBrothers.Domain;
 using PetBrothers.Domain.Volunteers.Pets;
 
 namespace PetBrothers.Infrastructure.Configurations;
@@ -11,18 +11,11 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
     {
         builder.ToTable("pets");
 
-        builder.HasKey(i => i.Id);
-
-        builder.HasOne(p => p.Volunteer)
-            .WithMany(v => v.OwnedPets)
-            .IsRequired(false)
-            .OnDelete(DeleteBehavior.NoAction);
-
         builder.ComplexProperty(m => m.Name, tb =>
         {
             tb.Property(p => p.Value)
                 .IsRequired()
-                .HasMaxLength(Constants.MAX_SMALL_LENGTH)
+                .HasMaxLength(Name.MAX_LENGTH)
                 .HasColumnName("name");
         });
 
@@ -30,7 +23,7 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         {
             tb.Property(p => p.Value)
                 .IsRequired()
-                .HasMaxLength(Constants.MAX_SMALL_LENGTH)
+                .HasMaxLength(Species.MAX_LENGTH)
                 .HasColumnName("species");
         });
 
@@ -38,7 +31,7 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         {
             tb.Property(p => p.Value)
                 .IsRequired()
-                .HasMaxLength(Constants.MAX_MEDIUM_LENGTH)
+                .HasMaxLength(Description.MAX_LENGTH)
                 .HasColumnName("description");
         });
 
@@ -46,7 +39,7 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         {
             tb.Property(p => p.Value)
                 .IsRequired()
-                .HasMaxLength(Constants.MAX_SMALL_LENGTH)
+                .HasMaxLength(Breed.MAX_LENGTH)
                 .HasColumnName("breed");
         });
 
@@ -54,7 +47,7 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         {
             tb.Property(p => p.Value)
                 .IsRequired()
-                .HasMaxLength(Constants.MAX_SMALL_LENGTH)
+                .HasMaxLength(Colour.MAX_LENGTH)
                 .HasColumnName("colour");
         });
 
@@ -62,7 +55,7 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         {
             tb.Property(p => p.Value)
                 .IsRequired()
-                .HasMaxLength(Constants.MAX_LARGE_LENGTH)
+                .HasMaxLength(HealthInformation.MAX_LENGTH)
                 .HasColumnName("health_information");
         });
 
@@ -70,7 +63,7 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         {
             tb.Property(p => p.Value)
                 .IsRequired()
-                .HasMaxLength(Constants.MAX_MEDIUM_LENGTH)
+                .HasMaxLength(CurrentAddress.MAX_LENGTH)
                 .HasColumnName("current_address");
         });
 
@@ -92,7 +85,7 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         {
             tb.Property(p => p.Value)
                 .IsRequired()
-                .HasMaxLength(Constants.MAX_SMALL_LENGTH)
+                .HasMaxLength(OwnerPhoneNumber.MAX_LENGTH)
                 .HasColumnName("owner_phone_number");
         });
 
@@ -103,13 +96,12 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
                 .HasColumnName("is_castrated");
         });
 
-        // Конвертирование значения для хранения в бд и извлечения из бд
         builder.Property(p => p.BirthDate)
             .HasConversion(
-                v => v.Value.ToDateTime(TimeOnly.MinValue), // Преобразование из DateOnly в DateTime
-                v => BirthDate.Create(DateOnly.FromDateTime(v)).Value // Преобразование из DateTime в DateOnly
+                v => v.Value.ToDateTime(TimeOnly.MinValue),
+                v => BirthDate.Create(DateOnly.FromDateTime(v)).Value
             )
-            .HasColumnName("birth_date"); // Добавлено имя столбца для BirthDate
+            .HasColumnName("birth_date");
 
         builder.ComplexProperty(m => m.IsVaccinated, tb =>
         {
@@ -133,11 +125,11 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
             {
                 fb.Property(f => f.Title)
                     .IsRequired()
-                    .HasMaxLength(Constants.MAX_SMALL_LENGTH)
+                    .HasMaxLength(PaymentDetail.TITLE_MAX_LENGTH)
                     .HasColumnName("payment_title");
                 fb.Property(f => f.Description)
                     .IsRequired()
-                    .HasMaxLength(Constants.MAX_MEDIUM_LENGTH)
+                    .HasMaxLength(PaymentDetail.DESCRIPTION_MAX_LENGTH)
                     .HasColumnName("payment_description");
             });
         });

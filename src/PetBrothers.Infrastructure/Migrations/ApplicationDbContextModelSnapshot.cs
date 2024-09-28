@@ -259,10 +259,9 @@ namespace PetBrothers.Infrastructure.Migrations
 
             modelBuilder.Entity("PetBrothers.Domain.Volunteers.Pets.Pet", b =>
                 {
-                    b.HasOne("PetBrothers.Domain.Volunteers.Volunteer", "Volunteer")
+                    b.HasOne("PetBrothers.Domain.Volunteers.Volunteer", null)
                         .WithMany("OwnedPets")
                         .HasForeignKey("volunteer_id")
-                        .OnDelete(DeleteBehavior.NoAction)
                         .HasConstraintName("fk_pets_volunteers_volunteer_id");
 
                     b.OwnsOne("PetBrothers.Domain.Volunteers.Pets.PetDetails", "PetDetails", b1 =>
@@ -291,8 +290,8 @@ namespace PetBrothers.Infrastructure.Migrations
 
                                     b2.Property<string>("Description")
                                         .IsRequired()
-                                        .HasMaxLength(500)
-                                        .HasColumnType("character varying(500)")
+                                        .HasMaxLength(100)
+                                        .HasColumnType("character varying(100)")
                                         .HasColumnName("payment_description");
 
                                     b2.Property<string>("Title")
@@ -316,8 +315,6 @@ namespace PetBrothers.Infrastructure.Migrations
                         });
 
                     b.Navigation("PetDetails");
-
-                    b.Navigation("Volunteer");
                 });
 
             modelBuilder.Entity("PetBrothers.Domain.Volunteers.Volunteer", b =>
@@ -380,8 +377,8 @@ namespace PetBrothers.Infrastructure.Migrations
 
                                     b2.Property<string>("Description")
                                         .IsRequired()
-                                        .HasMaxLength(500)
-                                        .HasColumnType("character varying(500)")
+                                        .HasMaxLength(100)
+                                        .HasColumnType("character varying(100)")
                                         .HasColumnName("payment_description");
 
                                     b2.Property<string>("Title")
