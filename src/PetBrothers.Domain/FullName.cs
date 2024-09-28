@@ -1,5 +1,4 @@
 ﻿using PetBrothers.Domain.Shared;
-using PetBrothers.Domain.Volunteers.Pets;
 
 namespace PetBrothers.Domain;
 

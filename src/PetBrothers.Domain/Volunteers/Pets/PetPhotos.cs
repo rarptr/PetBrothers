@@ -1,6 +1,4 @@
-﻿using PetBrothers.Domain.Shared;
-
-namespace PetBrothers.Domain.Volunteers.Pets;
+﻿namespace PetBrothers.Domain.Volunteers.Pets;
 
 public record PetPhotos
 {

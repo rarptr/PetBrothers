@@ -1,6 +1,4 @@
-﻿using PetBrothers.Domain.Shared;
-
-namespace PetBrothers.Domain.Volunteers;
+﻿namespace PetBrothers.Domain.Volunteers;
 
 public record VolunteerDetails
 {

@@ -1,7 +1,4 @@
-﻿using PetBrothers.Domain.Shared;
-using PetBrothers.Domain.Volunteers;
-
-namespace PetBrothers.Domain.Volunteers.Pets;
+﻿namespace PetBrothers.Domain.Volunteers.Pets;
 
 /// <summary>
 /// Домашний питомец
