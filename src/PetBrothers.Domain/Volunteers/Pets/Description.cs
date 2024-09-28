@@ -16,7 +16,5 @@ public record Description
         return new Description(value);
     }
 
-    private Description() { }
-
     private Description(string value) => Value = value;
 }

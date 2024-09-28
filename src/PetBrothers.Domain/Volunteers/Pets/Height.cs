@@ -14,8 +14,6 @@ public record Height
         return new Height(value);
     }
 
-    private Height() { }
-
     private Height(float value) => Value = value;
 
 }

@@ -16,7 +16,5 @@ public record CommonDescription
         return new CommonDescription(value);
     }
 
-    private CommonDescription() { }
-
     private CommonDescription(string value) => Value = value;
 }

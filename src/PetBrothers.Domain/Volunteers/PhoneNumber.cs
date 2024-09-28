@@ -16,7 +16,5 @@ public record PhoneNumber
         return new PhoneNumber(value);
     }
 
-    private PhoneNumber() { }
-
     private PhoneNumber(string value) => Value = value;
 }

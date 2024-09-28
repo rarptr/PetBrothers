@@ -14,7 +14,5 @@ public record BirthDate
         return new BirthDate(value);
     }
 
-    private BirthDate() { }
-
     private BirthDate(DateOnly value) => Value = value;
 }

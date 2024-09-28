@@ -16,7 +16,5 @@ public record Name
         return new Name(value);
     }
 
-    private Name() { }
-
     private Name(string value) => Value = value;
 }

@@ -32,8 +32,6 @@ public record SocialNetwork
         return new SocialNetwork(title, link);
     }
 
-    private SocialNetwork() { }
-
     private SocialNetwork(string title, string link)
     {
         Title = title;

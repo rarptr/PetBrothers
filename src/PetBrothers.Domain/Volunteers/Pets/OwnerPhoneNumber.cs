@@ -16,7 +16,5 @@ public record OwnerPhoneNumber
         return new OwnerPhoneNumber(value);
     }
 
-    private OwnerPhoneNumber() { }
-
     private OwnerPhoneNumber(string value) => Value = value;
 }

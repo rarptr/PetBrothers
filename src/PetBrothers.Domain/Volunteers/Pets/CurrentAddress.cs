@@ -16,7 +16,5 @@ public record CurrentAddress
         return new CurrentAddress(value);
     }
 
-    private CurrentAddress() { }
-
     private CurrentAddress(string value) => Value = value;
 }

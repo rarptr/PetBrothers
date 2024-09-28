@@ -16,7 +16,5 @@ public record Colour
         return new Colour(value);
     }
 
-    public Colour() { }
-
     private Colour(string value) => Value = value;
 }

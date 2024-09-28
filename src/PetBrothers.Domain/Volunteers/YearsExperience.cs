@@ -14,7 +14,5 @@ public record YearsExperience
         return new YearsExperience(value);
     }
 
-    private YearsExperience() { }
-
     private YearsExperience(int value) => Value = value;
 }

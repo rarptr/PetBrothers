@@ -16,7 +16,5 @@ public record Email
         return new Email(value);
     }
 
-    private Email() { }
-
     private Email(string value) => Value = value;
 }

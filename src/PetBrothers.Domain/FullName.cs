@@ -42,8 +42,6 @@ public record FullName
         return new FullName(lastName, firstName, middleName);
     }
 
-    private FullName() { }
-
     private FullName(string lastName, string firstName, string middleName)
     {
         LastName = lastName;

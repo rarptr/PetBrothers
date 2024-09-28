@@ -8,7 +8,5 @@ public record IsVaccinated
 
     public static Result<IsVaccinated> Create(bool value) => new IsVaccinated(value);
 
-    private IsVaccinated() { }
-
     private IsVaccinated(bool value) => Value = value;
 }

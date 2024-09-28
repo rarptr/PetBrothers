@@ -14,7 +14,5 @@ public record Weight
         return new Weight(value);
     }
 
-    private Weight() { }
-
     private Weight(float value) => Value = value;
 }

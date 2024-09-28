@@ -16,7 +16,5 @@ public record HealthInformation
         return new HealthInformation(value);
     }
 
-    private HealthInformation() { }
-
     private HealthInformation(string value) => Value = value;
 }

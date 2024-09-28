@@ -16,7 +16,5 @@ public record Species
         return new Species(value);
     }
 
-    private Species() { }
-
     private Species(string value) => Value = value;
 }

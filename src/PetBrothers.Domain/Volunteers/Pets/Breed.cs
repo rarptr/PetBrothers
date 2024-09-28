@@ -16,8 +16,6 @@ public record Breed
         return new Breed(value);
     }
 
-    private Breed() { }
-
     private Breed(string value) => Value = value;
 
 }

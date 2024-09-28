@@ -24,8 +24,6 @@ public record PetPhoto
         return petPhoto;
     }
 
-    private PetPhoto() { }
-
     private PetPhoto(string storagePath, bool isMain)
     {
         StoragePath = storagePath;

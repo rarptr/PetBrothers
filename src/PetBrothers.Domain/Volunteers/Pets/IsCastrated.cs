@@ -8,7 +8,5 @@ public record IsCastrated
 
     public static Result<IsCastrated> Create(bool value) => new IsCastrated(value);
 
-    private IsCastrated() { }
-
     private IsCastrated(bool value) => Value = value;
 }
