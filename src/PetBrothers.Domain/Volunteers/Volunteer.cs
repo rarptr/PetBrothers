@@ -6,14 +6,9 @@ namespace PetBrothers.Domain.Volunteers;
 /// <summary>
 /// Волонтёр
 /// </summary>
-public class Volunteer
+public sealed class Volunteer : Entity<VolunteerId>
 {
     private readonly List<Pet> _ownedPets = [];
-
-    /// <summary>
-    /// Id
-    /// </summary>
-    public Guid Id { get; private set; }
 
     /// <summary>
     /// ФИО
@@ -72,5 +67,50 @@ public class Volunteer
     {
         _ownedPets.Add(pet);
         return Result.Success();
+    }
+
+    public static Result<Volunteer> Create(
+        VolunteerId volunteerId,
+        FullName fullName,
+        Email email,
+        CommonDescription commonDescription,
+        YearsExperience yearsExperience,
+        PhoneNumber phoneNumber,
+        VolunteerDetails volunteerDetails)
+    {
+        ArgumentNullException.ThrowIfNull(volunteerId, nameof(volunteerId));
+        ArgumentNullException.ThrowIfNull(fullName, nameof(fullName));
+        ArgumentNullException.ThrowIfNull(email, nameof(email));
+        ArgumentNullException.ThrowIfNull(commonDescription, nameof(commonDescription));
+        ArgumentNullException.ThrowIfNull(phoneNumber, nameof(phoneNumber));
+        ArgumentNullException.ThrowIfNull(volunteerDetails, nameof(volunteerDetails));
+
+        return new Volunteer(
+            volunteerId,
+            fullName,
+            email,
+            commonDescription,
+            yearsExperience,
+            phoneNumber,
+            volunteerDetails
+        );
+    }
+
+    private Volunteer(
+        VolunteerId volunteerId,
+        FullName fullName,
+        Email email,
+        CommonDescription commonDescription,
+        YearsExperience yearsExperience,
+        PhoneNumber phoneNumber,
+        VolunteerDetails volunteerDetails
+    ) : base(volunteerId)
+    {
+        FullName = fullName;
+        Email = email;
+        CommonDescription = commonDescription;
+        YearsExperience = yearsExperience;
+        PhoneNumber = phoneNumber;
+        VolunteerDetails = volunteerDetails;
     }
 }

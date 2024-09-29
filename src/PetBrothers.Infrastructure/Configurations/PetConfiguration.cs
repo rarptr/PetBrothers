@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PetBrothers.Domain;
+using PetBrothers.Domain.Volunteers;
 using PetBrothers.Domain.Volunteers.Pets;
 
 namespace PetBrothers.Infrastructure.Configurations;
@@ -10,6 +11,11 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
     public void Configure(EntityTypeBuilder<Pet> builder)
     {
         builder.ToTable("pets");
+
+        builder.Property(i => i.Id)
+            .HasConversion(
+                id => id.Value,
+                value => PetId.Create(value));
 
         builder.ComplexProperty(m => m.Name, tb =>
         {

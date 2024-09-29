@@ -17,6 +17,11 @@ public class VolunteerConfiguration : IEntityTypeConfiguration<Volunteer>
             .WithOne()
             .HasForeignKey("volunteer_id");
 
+        builder.Property(i => i.Id)
+            .HasConversion(
+                id => id.Value,
+                value => VolunteerId.Create(value));
+
         builder.ComplexProperty(m => m.FullName, tb =>
         {
             tb.Property(p => p.FirstName)
