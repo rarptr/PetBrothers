@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PetBrothers.Domain;
+using PetBrothers.Domain.Species;
 using PetBrothers.Domain.Volunteers;
 using PetBrothers.Domain.Volunteers.Pets;
 
@@ -12,6 +13,8 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
     {
         builder.ToTable("pets");
 
+        builder.HasKey(i => i.Id);
+
         builder.Property(i => i.Id)
             .HasConversion(
                 id => id.Value,
@@ -21,16 +24,8 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         {
             tb.Property(p => p.Value)
                 .IsRequired()
-                .HasMaxLength(Name.MAX_LENGTH)
+                .HasMaxLength(Domain.Volunteers.Pets.Name.MAX_LENGTH)
                 .HasColumnName("name");
-        });
-
-        builder.ComplexProperty(m => m.Species, tb =>
-        {
-            tb.Property(p => p.Value)
-                .IsRequired()
-                .HasMaxLength(Species.MAX_LENGTH)
-                .HasColumnName("species");
         });
 
         builder.ComplexProperty(m => m.Description, tb =>
@@ -41,12 +36,22 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
                 .HasColumnName("description");
         });
 
-        builder.ComplexProperty(m => m.Breed, tb =>
+        builder.ComplexProperty(m => m.AnimalType, tb =>
         {
-            tb.Property(p => p.Value)
+            tb.Property(p => p.SpeciesId)
+                .HasConversion(
+                    id => id.Value,
+                    value => SpeciesId.Create(value)
+                )
                 .IsRequired()
-                .HasMaxLength(Breed.MAX_LENGTH)
-                .HasColumnName("breed");
+                .HasColumnName("species_id");
+            tb.Property(p => p.BreedId)
+                .HasConversion(
+                    id => id.Value,
+                    value => BreedId.Create(value)
+                )
+                .IsRequired()
+                .HasColumnName("breed_id");
         });
 
         builder.ComplexProperty(m => m.Colour, tb =>

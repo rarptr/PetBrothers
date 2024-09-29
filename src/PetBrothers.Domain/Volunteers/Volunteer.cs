@@ -38,7 +38,7 @@ public sealed class Volunteer : Entity<VolunteerId>
     /// <summary>
     /// Дополнительная информация о волонтёре
     /// </summary>
-    public VolunteerDetails VolunteerDetails = default!;
+    public VolunteerDetails VolunteerDetails { get; private set; } = default!;
 
     /// <summary>
     /// Количество удомашненных животных
@@ -61,7 +61,7 @@ public sealed class Volunteer : Entity<VolunteerId>
     /// <summary>
     /// Домашние животные, закреплённые за волонтёром
     /// </summary>
-    public List<Pet> OwnedPets = [];
+    public IReadOnlyList<Pet> OwnedPets => _ownedPets;
 
     public Result AddOwnedPet(Pet pet)
     {
@@ -95,6 +95,8 @@ public sealed class Volunteer : Entity<VolunteerId>
             volunteerDetails
         );
     }
+
+    private Volunteer() : base(VolunteerId.New()) { }
 
     private Volunteer(
         VolunteerId volunteerId,
