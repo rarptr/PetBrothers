@@ -6,7 +6,5 @@ public record IsCastrated
 {
     public bool Value { get; }
 
-    public static Result<IsCastrated> Create(bool value) => new IsCastrated(value);
-
-    private IsCastrated(bool value) => Value = value;
+    public IsCastrated(bool value) => Value = value;
 }
