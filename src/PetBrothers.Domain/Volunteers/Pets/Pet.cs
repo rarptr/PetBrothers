@@ -1,15 +1,10 @@
-﻿using CSharpFunctionalExtensions;
-
-namespace PetBrothers.Domain;
+﻿namespace PetBrothers.Domain.Volunteers.Pets;
 
 /// <summary>
 /// Домашний питомец
 /// </summary>
 public class Pet
 {
-    private readonly List<PaymentDetails> _paymentDetails = [];
-    private readonly List<PetPhoto> _petPhotos = [];
-
     /// <summary>
     /// Id
     /// </summary>
@@ -18,98 +13,79 @@ public class Pet
     /// <summary>
     /// Кличка
     /// </summary>
-    public string Name { get; private set; } = string.Empty;
+    public Name Name { get; private set; } = default!;
 
     /// <summary>
     /// Вид животного
     /// </summary>
-    public string Species { get; private set; } = string.Empty;
+    public Species Species { get; private set; } = default!;
 
     /// <summary>
     /// Общее описание
     /// </summary>
-    public string Description { get; private set; } = string.Empty;
-
+    public Description Description { get; private set; } = default!;
     /// <summary>
     /// Порода
     /// </summary>
-    public string Breed { get; private set; } = string.Empty;
+    public Breed Breed { get; private set; } = default!;
 
     /// <summary>
     /// Окрас
     /// </summary>
-    public string Colour { get; private set; } = string.Empty;
+    public Colour Colour { get; private set; } = default!;
 
     /// <summary>
     /// Информация о здоровье
     /// </summary>
-    public string HealthInformation { get; private set; } = string.Empty;
+    public HealthInformation HealthInformation { get; private set; } = default!;
 
     /// <summary>
     /// Адрес текущего местоположения
     /// </summary>
-    public string CurrentAddress { get; private set; } = string.Empty;
+    public CurrentAddress CurrentAddress { get; private set; } = default!;
 
     /// <summary>
     /// Вес
     /// </summary>
-    public float Weight { get; private set; }
+    public Weight Weight { get; private set; } = default!;
 
     /// <summary>
     /// Рост
     /// </summary>
-    public float Height { get; private set; }
+    public Height Height { get; private set; } = default!;
 
     /// <summary>
     /// Номер телефона для связи с владельцем
     /// </summary>
-    public string OwnerPhoneNumber { get; private set; } = string.Empty;
+    public OwnerPhoneNumber OwnerPhoneNumber { get; private set; } = default!;
 
     /// <summary>
     /// Указывает кастрирован ли питомец. true - кастрирован, иначе - false
     /// </summary>
-    public bool IsCastrated { get; private set; }
+    public IsCastrated IsCastrated { get; private set; } = default!;
 
     /// <summary>
     /// Дата рождения
     /// </summary>
-    public DateOnly BirthDate { get; private set; }
+    public BirthDate BirthDate { get; private set; } = default!;
 
     /// <summary>
     /// Указывает вакцинирован ли питомец. true - вакцинирован, иначе - false
     /// </summary>
-    public bool IsVaccinated { get; private set; }
+    public IsVaccinated IsVaccinated { get; private set; } = default!;
 
     /// <summary>
     /// Статус помощи
     /// </summary>
-    public PetAssistanceStatusEnum AssistanceStatus { get; private set; }
+    public PetAssistanceStatusEnum AssistanceStatus { get; private set; } = PetAssistanceStatusEnum.None;
 
     /// <summary>
     /// Реквизиты для финансовой помощи
     /// </summary>
-    public IReadOnlyList<PaymentDetails> PaymentDetails => _paymentDetails;
-
-    /// <summary>
-    /// Фотографии
-    /// </summary>
-    public IReadOnlyList<PetPhoto> PetPhotos => _petPhotos;
+    public PetDetails PetDetails = default!;
 
     /// <summary>
     /// Дата создания
     /// </summary>
     public DateTime CreatedDateTime { get; private set; } = DateTime.UtcNow;
-
-
-    public Result AddPaymentDetails(PaymentDetails paymentDetails)
-    {
-        _paymentDetails.Add(paymentDetails);
-        return Result.Success();
-    }
-
-    public Result AddPetPhoto(PetPhoto petPhoto)
-    {
-        _petPhotos.Add(petPhoto);
-        return Result.Success();
-    }
 }
