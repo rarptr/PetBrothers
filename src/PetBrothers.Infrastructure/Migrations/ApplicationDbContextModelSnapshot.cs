@@ -26,7 +26,6 @@ namespace PetBrothers.Infrastructure.Migrations
             modelBuilder.Entity("PetBrothers.Domain.Volunteers.Pets.Pet", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
@@ -182,7 +181,6 @@ namespace PetBrothers.Infrastructure.Migrations
             modelBuilder.Entity("PetBrothers.Domain.Volunteers.Volunteer", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 

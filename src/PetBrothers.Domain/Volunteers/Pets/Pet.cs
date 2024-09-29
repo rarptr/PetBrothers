@@ -1,15 +1,12 @@
-﻿namespace PetBrothers.Domain.Volunteers.Pets;
+﻿using PetBrothers.Domain.Shared;
+
+namespace PetBrothers.Domain.Volunteers.Pets;
 
 /// <summary>
 /// Домашний питомец
 /// </summary>
-public class Pet
+public sealed class Pet : Entity<PetId>
 {
-    /// <summary>
-    /// Id
-    /// </summary>
-    public Guid Id { get; private set; }
-
     /// <summary>
     /// Кличка
     /// </summary>
@@ -84,8 +81,94 @@ public class Pet
     /// </summary>
     public PetDetails PetDetails = default!;
 
-    /// <summary>
-    /// Дата создания
-    /// </summary>
-    public DateTime CreatedDateTime { get; private set; } = DateTime.UtcNow;
+    public static Result<Pet> Create(
+        PetId petId,
+        Name name,
+        Species species,
+        Description description,
+        Breed breed,
+        Colour colour,
+        HealthInformation healthInformation,
+        CurrentAddress currentAddress,
+        Weight weight,
+        Height height,
+        OwnerPhoneNumber ownerPhoneNumber,
+        IsCastrated isCastrated,
+        BirthDate birthDate,
+        IsVaccinated isVaccinated,
+        PetAssistanceStatusEnum assistanceStatus,
+        PetDetails petDetails)
+    {
+        ArgumentNullException.ThrowIfNull(petId, nameof(petId));
+        ArgumentNullException.ThrowIfNull(name, nameof(name));
+        ArgumentNullException.ThrowIfNull(species, nameof(species));
+        ArgumentNullException.ThrowIfNull(description, nameof(description));
+        ArgumentNullException.ThrowIfNull(breed, nameof(breed));
+        ArgumentNullException.ThrowIfNull(colour, nameof(colour));
+        ArgumentNullException.ThrowIfNull(healthInformation, nameof(healthInformation));
+        ArgumentNullException.ThrowIfNull(currentAddress, nameof(currentAddress));
+        ArgumentNullException.ThrowIfNull(weight, nameof(weight));
+        ArgumentNullException.ThrowIfNull(height, nameof(height));
+        ArgumentNullException.ThrowIfNull(ownerPhoneNumber, nameof(ownerPhoneNumber));
+        ArgumentNullException.ThrowIfNull(isCastrated, nameof(isCastrated));
+        ArgumentNullException.ThrowIfNull(birthDate, nameof(birthDate));
+        ArgumentNullException.ThrowIfNull(isVaccinated, nameof(isVaccinated));
+        ArgumentNullException.ThrowIfNull(assistanceStatus, nameof(assistanceStatus));
+        ArgumentNullException.ThrowIfNull(petDetails, nameof(petDetails));
+
+        return new Pet(
+            petId,
+            name,
+            species,
+            description,
+            breed,
+            colour,
+            healthInformation,
+            currentAddress,
+            weight,
+            height,
+            ownerPhoneNumber,
+            isCastrated,
+            birthDate,
+            isVaccinated,
+            assistanceStatus,
+            petDetails
+        );
+    }
+
+    private Pet(
+        PetId id,
+        Name name,
+        Species species,
+        Description description,
+        Breed breed,
+        Colour colour,
+        HealthInformation healthInformation,
+        CurrentAddress currentAddress,
+        Weight weight,
+        Height height,
+        OwnerPhoneNumber ownerPhoneNumber,
+        IsCastrated isCastrated,
+        BirthDate birthDate,
+        IsVaccinated isVaccinated,
+        PetAssistanceStatusEnum assistanceStatus,
+        PetDetails petDetails
+    ) : base(id)
+    {
+        Name = name;
+        Species = species;
+        Description = description;
+        Breed = breed;
+        Colour = colour;
+        HealthInformation = healthInformation;
+        CurrentAddress = currentAddress;
+        Weight = weight;
+        Height = height;
+        OwnerPhoneNumber = ownerPhoneNumber;
+        IsCastrated = isCastrated;
+        BirthDate = birthDate;
+        IsVaccinated = isVaccinated;
+        AssistanceStatus = assistanceStatus;
+        PetDetails = petDetails;
+    }
 }

@@ -13,7 +13,7 @@ using PetBrothers.Infrastructure;
 namespace PetBrothers.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240928223548_Initial")]
+    [Migration("20240928232753_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -29,7 +29,6 @@ namespace PetBrothers.Infrastructure.Migrations
             modelBuilder.Entity("PetBrothers.Domain.Volunteers.Pets.Pet", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
@@ -185,7 +184,6 @@ namespace PetBrothers.Infrastructure.Migrations
             modelBuilder.Entity("PetBrothers.Domain.Volunteers.Volunteer", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
