@@ -94,22 +94,6 @@ public sealed class Pet : Entity<PetId>
         PetAssistanceStatusEnum assistanceStatus,
         PetDetails petDetails)
     {
-        ArgumentNullException.ThrowIfNull(petId, nameof(petId));
-        ArgumentNullException.ThrowIfNull(name, nameof(name));
-        ArgumentNullException.ThrowIfNull(description, nameof(description));
-        ArgumentNullException.ThrowIfNull(animalType, nameof(animalType));
-        ArgumentNullException.ThrowIfNull(colour, nameof(colour));
-        ArgumentNullException.ThrowIfNull(healthInformation, nameof(healthInformation));
-        ArgumentNullException.ThrowIfNull(currentAddress, nameof(currentAddress));
-        ArgumentNullException.ThrowIfNull(weight, nameof(weight));
-        ArgumentNullException.ThrowIfNull(height, nameof(height));
-        ArgumentNullException.ThrowIfNull(ownerPhoneNumber, nameof(ownerPhoneNumber));
-        ArgumentNullException.ThrowIfNull(isCastrated, nameof(isCastrated));
-        ArgumentNullException.ThrowIfNull(birthDate, nameof(birthDate));
-        ArgumentNullException.ThrowIfNull(isVaccinated, nameof(isVaccinated));
-        ArgumentNullException.ThrowIfNull(assistanceStatus, nameof(assistanceStatus));
-        ArgumentNullException.ThrowIfNull(petDetails, nameof(petDetails));
-
         return new Pet(
             petId,
             name,

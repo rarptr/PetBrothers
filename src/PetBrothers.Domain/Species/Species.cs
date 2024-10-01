@@ -21,9 +21,6 @@ public sealed class Species : Entity<SpeciesId>
 
     public static Result<Species> Create(SpeciesId breedId, Name name)
     {
-        ArgumentNullException.ThrowIfNull(breedId, nameof(breedId));
-        ArgumentNullException.ThrowIfNull(name, nameof(name));
-
         return new Species(breedId, name);
     }
 

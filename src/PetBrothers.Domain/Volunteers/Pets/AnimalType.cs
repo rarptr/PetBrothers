@@ -9,17 +9,14 @@ public record AnimalType
 {
     public SpeciesId SpeciesId { get; }
 
-    public BreedId BreedId { get; }
+    public Guid BreedId { get; }
 
     public static AnimalType Create(SpeciesId speciesId, BreedId breedId)
     {
-        ArgumentNullException.ThrowIfNull(speciesId, nameof(breedId));
-        ArgumentNullException.ThrowIfNull(breedId, nameof(breedId));
-
         return new AnimalType(speciesId, breedId);
     }
 
-    private AnimalType(SpeciesId speciesId, BreedId breedId)
+    private AnimalType(SpeciesId speciesId, Guid breedId)
     {
         SpeciesId = speciesId;
         BreedId = breedId;

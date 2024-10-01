@@ -46,10 +46,6 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
                 .IsRequired()
                 .HasColumnName("species_id");
             tb.Property(p => p.BreedId)
-                .HasConversion(
-                    id => id.Value,
-                    value => BreedId.Create(value)
-                )
                 .IsRequired()
                 .HasColumnName("breed_id");
         });

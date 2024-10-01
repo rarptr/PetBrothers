@@ -78,13 +78,6 @@ public sealed class Volunteer : Entity<VolunteerId>
         PhoneNumber phoneNumber,
         VolunteerDetails volunteerDetails)
     {
-        ArgumentNullException.ThrowIfNull(volunteerId, nameof(volunteerId));
-        ArgumentNullException.ThrowIfNull(fullName, nameof(fullName));
-        ArgumentNullException.ThrowIfNull(email, nameof(email));
-        ArgumentNullException.ThrowIfNull(commonDescription, nameof(commonDescription));
-        ArgumentNullException.ThrowIfNull(phoneNumber, nameof(phoneNumber));
-        ArgumentNullException.ThrowIfNull(volunteerDetails, nameof(volunteerDetails));
-
         return new Volunteer(
             volunteerId,
             fullName,

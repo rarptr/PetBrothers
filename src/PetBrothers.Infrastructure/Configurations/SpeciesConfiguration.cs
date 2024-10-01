@@ -13,7 +13,7 @@ public class SpeciesConfiguration : IEntityTypeConfiguration<Species>
         builder.HasKey(i => i.Id);
 
         builder.HasMany(s => s.Breeds)
-            .WithOne(b => b.Species)
+            .WithOne()
             .HasForeignKey("species_id")
             .OnDelete(DeleteBehavior.NoAction);
 
