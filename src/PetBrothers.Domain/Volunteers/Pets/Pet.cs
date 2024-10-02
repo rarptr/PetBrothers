@@ -13,18 +13,14 @@ public sealed class Pet : Entity<PetId>
     public Name Name { get; private set; } = default!;
 
     /// <summary>
-    /// Вид животного
-    /// </summary>
-    public Species Species { get; private set; } = default!;
-
-    /// <summary>
     /// Общее описание
     /// </summary>
     public Description Description { get; private set; } = default!;
+
     /// <summary>
-    /// Порода
+    /// Тип животного
     /// </summary>
-    public Breed Breed { get; private set; } = default!;
+    public AnimalType AnimalType { get; private set; } = default!;
 
     /// <summary>
     /// Окрас
@@ -84,9 +80,8 @@ public sealed class Pet : Entity<PetId>
     public static Result<Pet> Create(
         PetId petId,
         Name name,
-        Species species,
         Description description,
-        Breed breed,
+        AnimalType animalType,
         Colour colour,
         HealthInformation healthInformation,
         CurrentAddress currentAddress,
@@ -99,29 +94,11 @@ public sealed class Pet : Entity<PetId>
         PetAssistanceStatusEnum assistanceStatus,
         PetDetails petDetails)
     {
-        ArgumentNullException.ThrowIfNull(petId, nameof(petId));
-        ArgumentNullException.ThrowIfNull(name, nameof(name));
-        ArgumentNullException.ThrowIfNull(species, nameof(species));
-        ArgumentNullException.ThrowIfNull(description, nameof(description));
-        ArgumentNullException.ThrowIfNull(breed, nameof(breed));
-        ArgumentNullException.ThrowIfNull(colour, nameof(colour));
-        ArgumentNullException.ThrowIfNull(healthInformation, nameof(healthInformation));
-        ArgumentNullException.ThrowIfNull(currentAddress, nameof(currentAddress));
-        ArgumentNullException.ThrowIfNull(weight, nameof(weight));
-        ArgumentNullException.ThrowIfNull(height, nameof(height));
-        ArgumentNullException.ThrowIfNull(ownerPhoneNumber, nameof(ownerPhoneNumber));
-        ArgumentNullException.ThrowIfNull(isCastrated, nameof(isCastrated));
-        ArgumentNullException.ThrowIfNull(birthDate, nameof(birthDate));
-        ArgumentNullException.ThrowIfNull(isVaccinated, nameof(isVaccinated));
-        ArgumentNullException.ThrowIfNull(assistanceStatus, nameof(assistanceStatus));
-        ArgumentNullException.ThrowIfNull(petDetails, nameof(petDetails));
-
         return new Pet(
             petId,
             name,
-            species,
             description,
-            breed,
+            animalType,
             colour,
             healthInformation,
             currentAddress,
@@ -136,12 +113,13 @@ public sealed class Pet : Entity<PetId>
         );
     }
 
+    private Pet() : base(PetId.New()) { }
+
     private Pet(
         PetId id,
         Name name,
-        Species species,
         Description description,
-        Breed breed,
+        AnimalType animalType,
         Colour colour,
         HealthInformation healthInformation,
         CurrentAddress currentAddress,
@@ -156,9 +134,8 @@ public sealed class Pet : Entity<PetId>
     ) : base(id)
     {
         Name = name;
-        Species = species;
         Description = description;
-        Breed = breed;
+        AnimalType = animalType;
         Colour = colour;
         HealthInformation = healthInformation;
         CurrentAddress = currentAddress;

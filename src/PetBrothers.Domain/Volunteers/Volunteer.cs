@@ -38,7 +38,7 @@ public sealed class Volunteer : Entity<VolunteerId>
     /// <summary>
     /// Дополнительная информация о волонтёре
     /// </summary>
-    public VolunteerDetails VolunteerDetails = default!;
+    public VolunteerDetails VolunteerDetails { get; private set; } = default!;
 
     /// <summary>
     /// Количество удомашненных животных
@@ -61,7 +61,7 @@ public sealed class Volunteer : Entity<VolunteerId>
     /// <summary>
     /// Домашние животные, закреплённые за волонтёром
     /// </summary>
-    public List<Pet> OwnedPets = [];
+    public IReadOnlyList<Pet> OwnedPets => _ownedPets;
 
     public Result AddOwnedPet(Pet pet)
     {
@@ -78,13 +78,6 @@ public sealed class Volunteer : Entity<VolunteerId>
         PhoneNumber phoneNumber,
         VolunteerDetails volunteerDetails)
     {
-        ArgumentNullException.ThrowIfNull(volunteerId, nameof(volunteerId));
-        ArgumentNullException.ThrowIfNull(fullName, nameof(fullName));
-        ArgumentNullException.ThrowIfNull(email, nameof(email));
-        ArgumentNullException.ThrowIfNull(commonDescription, nameof(commonDescription));
-        ArgumentNullException.ThrowIfNull(phoneNumber, nameof(phoneNumber));
-        ArgumentNullException.ThrowIfNull(volunteerDetails, nameof(volunteerDetails));
-
         return new Volunteer(
             volunteerId,
             fullName,
@@ -95,6 +88,8 @@ public sealed class Volunteer : Entity<VolunteerId>
             volunteerDetails
         );
     }
+
+    private Volunteer() : base(VolunteerId.New()) { }
 
     private Volunteer(
         VolunteerId volunteerId,

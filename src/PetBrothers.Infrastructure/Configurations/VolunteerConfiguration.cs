@@ -15,7 +15,8 @@ public class VolunteerConfiguration : IEntityTypeConfiguration<Volunteer>
 
         builder.HasMany(v => v.OwnedPets)
             .WithOne()
-            .HasForeignKey("volunteer_id");
+            .HasForeignKey("volunteer_id")
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder.Property(i => i.Id)
             .HasConversion(
